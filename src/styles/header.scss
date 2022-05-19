@@ -1,0 +1,28 @@
+.header_container{
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  background-color: white;
+  margin: 0;
+  align-items: center;
+  border-bottom-left-radius: 5px ;
+  border-bottom-right-radius: 5px ;
+  border-bottom: 2px solid rgb(129, 129, 129);
+  height: 6vw;
+  &> .header_item {
+    font-size: 30px;
+    margin-left: 3vw;
+    color: rgb(129, 129, 129);
+    cursor: pointer;
+    text-decoration: none;
+  }
+  &> .header_item_active{
+    font-size: 30px;
+    margin-left: 1vw;
+    margin-left: 3vw;
+    color: rgb(106, 198, 111);
+    text-decoration: none;
+    cursor: pointer;
+  }
+  
+}

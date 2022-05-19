@@ -1,0 +1,104 @@
+.main_page_container{
+  font-family: 'Roboto';
+  width: 96vw;
+  padding-left: 2vw; 
+  padding-right: 2vw; 
+  &> .main_page_header{
+    display: flex;
+    align-items: center;
+    .main_page_sort_zag{
+      color: rgb(106, 198, 111);
+      margin-left: 20vw;
+      margin-right: 8vw;
+      font-family: 'Roboto';
+    }
+    .main_page_active_sort{
+      cursor: pointer;
+      font-family: 'Roboto';
+      color: rgb(106, 198, 111);
+      font-size: 20px;
+      margin-left: 3vw;
+    }
+    .main_page_sort{
+      margin-left: 3vw;
+      font-family: 'Roboto';
+      color: rgb(129, 129, 129);
+      cursor: pointer;
+      font-size: 20px;
+    }
+
+    &> div{
+      &>form{
+        &> button{
+          font-family: 'Roboto';
+          height: 2.6vw;
+          color:white;
+          width: 10vw;
+          margin-left: 0.5vw;
+          background-color:rgb(106, 198, 111);
+          border-radius: 5px;
+          cursor: pointer;
+        }
+        &> input{
+          width: 13vw;
+          font-size: 17px;
+          height: 2vw;
+          border-radius: 5px;
+          color:rgb(129, 129, 129);
+        }
+
+        
+      }
+    }
+
+
+  }
+
+  &> .company_item_container{
+    border: 2px solid rgb(106, 198, 111);
+    border-radius: 10px;
+    display: grid;
+    grid-template-columns: 3fr 3fr 3fr;
+    width: 76vw;
+    margin-left: 8vw;
+    height: 3vw;
+    margin-top: 2vw;
+    cursor: pointer;
+    background-color:rgb(195, 195, 195);
+    padding: 2vw;
+    &> .company_item_id{
+      border-right: 1px solid white;
+      text-align: center;
+      color:white;
+      font-size: 20px;
+    }
+    &> .company_item_admin{
+      border-right: 1px solid white;
+      border-left: 1px solid white;
+      &> .company_item_admin_fio{
+        text-align: center;
+        color:white;
+        font-size: 20px;
+      }
+      &> .company_item_admin_email{
+        text-align: center;
+        color:white;
+        font-size: 20px;
+      }
+    }
+    &> .company_item_tarif{
+      border-left: 1px solid white;
+      &> .company_item_tarif_space{
+        text-align: center;
+        color:white;
+        font-size: 20px;
+      }
+      &> .company_item_tarif_date{
+        text-align: center;
+        color:white;
+        font-size: 20px;
+      }
+    }
+  }
+  
+}
