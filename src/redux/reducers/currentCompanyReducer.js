@@ -1,6 +1,6 @@
 import currentApi from "../../api/currentApi"
 
-
+const SET_SPACE = 'SET_SPACE'
 const SET_COMPANY = 'SET_COMPANY'
 const CHANGE_ADMIN = 'CHANGE_ADMIN'
 const DELETE_USER = 'DELETE_USER'
@@ -26,6 +26,11 @@ let initialState = {
 
 const currentCompanyReducer = (state = initialState,action) => {
   switch(action.type){
+    case SET_PAYMENT_DATE:
+      let myCompany = {...state.company,paymentDate:action.date}
+      return{
+        ...state,company:{...myCompany}
+      }
     case SET_COMPANY:
       console.log(action)
       return {...state,company:action.company}
@@ -36,6 +41,10 @@ const currentCompanyReducer = (state = initialState,action) => {
       newErrors[type] = bool
       return{
         ...state,errors:newErrors
+      }
+    case SET_SPACE:
+      return{
+        ...state,company:{...state.company,space:action.space}
       }
     case SET_DISABLE:
       const disable = action.disable
@@ -73,6 +82,8 @@ const setChangeAdmin = (userId) => ({type:CHANGE_ADMIN,userId})
 const setDeleted = (userId) => ({type:DELETE_USER,userId})
 const setErrors = (bool,err) => ({type:SET_ERROR,bool,err})
 const setDisable = (bool,disable) => ({type:SET_DISABLE,bool,disable})
+const changeDate = (date) => ({type:SET_PAYMENT_DATE,date})
+const setSpace = (space) => ({type:SET_SPACE,space})
 
 export const getCompany = (id) => {
     return async (dispatch) => {
@@ -93,11 +104,9 @@ export const changeAdmin = (userId) => {
       dispatch(setErrors(false,'users'))
       setTimeout(() => {
         dispatch(setErrors(true,'users'))
-      },5000)
+      },1000)
     }
-  
     dispatch(setDisable(false,'users'))
-  
     console.log(resp)
   }
 }
@@ -112,7 +121,7 @@ export const deleteUser = (userId) => {
       dispatch(setErrors(false,'users'))
       setTimeout(() => {
         dispatch(setErrors(true,'users'))
-      },5000)
+      },1000)
     }
    
     dispatch(setDisable(false,'users'))
@@ -121,20 +130,44 @@ export const deleteUser = (userId) => {
   }
 }
 
-export const changePayDate = (date,userId) => {
+export const changePayDate = (date,companyId) => {
   return async (dispatch) => {
     dispatch(setDisable(true,'date'))
-    const resp = await currentApi.changePayDate(date,userId).then(res => res.data)
+    const resp = await currentApi.changePayDate(date,companyId).then(res => res.data)
     console.log(resp)
     if (!resp){
       dispatch(setErrors(true,'date'))
       setTimeout(() => {
         dispatch(setErrors(false,'date'))
-      })
+      },1000)
     }else{
+      dispatch(changeDate(date))
       dispatch(setDisable(false,'date'))
     }
   }
 }
 
+export const changeSpace = (space,userId) => {
+  return async (dispatch) => {
+    dispatch(setDisable(true,'space'))
+    const resp = await currentApi.changeSpace(space,userId).then(res => res.data).catch(err => {
+      dispatch(setErrors(true,'space'))
+      setTimeout(() => {
+        dispatch(setErrors(false,'space'))
+      },1000)
+      dispatch(setDisable(false,'space'))
+
+    })
+    console.log(resp)
+    if ( !(resp === true)){
+      dispatch(setErrors(true,'space'))
+      setTimeout(() => {
+        dispatch(setErrors(false,'space'))
+      },1000)
+    }else{
+      dispatch(setSpace(space))
+      dispatch(setDisable(false,'space'))
+    }
+  }
+}
 export default currentCompanyReducer

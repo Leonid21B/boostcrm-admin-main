@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import {useDispatch} from 'react-redux'
+import getClassNameAndText from "../../../../functions/getAlert";
 import useAlert from "../../../../hooks/AlertHook";
 import { changePayDate } from "../../../../redux/reducers/currentCompanyReducer";
 
@@ -35,7 +36,7 @@ const ChangeDate = (props) => {
       <h1 className="current_company_date_zag">Изменить дату тарифа:</h1>
       <input className="current_company_input_date" onChange={disable ? null : (e) => inputHandler(e)} type="date" value = {stateDate}/>
       <button onClick={change}>Изменить дату</button>
-      <div className="current_company_alert_green"></div>
+      <div className={getClassNameAndText(err, succ)[0]}>{getClassNameAndText(err,succ)[1]}</div>
     </div>
   )
 }

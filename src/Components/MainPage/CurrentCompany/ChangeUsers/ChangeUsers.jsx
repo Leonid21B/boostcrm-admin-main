@@ -16,53 +16,6 @@ const ChangeUsers = (props) => {
   const [disable, error] = useAlert('users', setSucsess,setErr)
   console.log(disable,error)
 
-  {/*const checkAlerts = (left,right,type) => {
-    console.log(left,right,type)
-    switch (type) {
-      case 'disable' :
-        if (left == false && right == true){
-          if(success != true){
-            setSucsess(true)
-            setTimeout(() => {
-              console.log(success)
-              setSucsess(false)
-            },5000)
-          }
-        }
-        return false
-      case 'error':
-        if(left == false && right == true){
-          if(err != true){
-            setErr(true)
-          }
-        }else if(left == true && right == false){
-          if(err != false){
-            setErr(false)
-          }
-        }
-        return false
-      default:
-        return true
-    }
-  }
-  
-  const disable = useSelector(state => state.current.disabled.users, (l,r) => {
-    console.log(l,r)
-    if(l != r){
-      return checkAlerts(l, r, 'disable')
-    }  
-    return true
-  })
-  const error = useSelector(state => state.current.errors.users, (l, r) => {
-    console.log(l, r)
-    if (l != r) {
-      return checkAlerts(l, r, 'err')
-    }
-    return true
-  })
-  
-  */}
-
   const changeAd = (userId) => {
     dispatch(changeAdmin(userId))
   }

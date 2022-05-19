@@ -13,6 +13,9 @@ const currentApi = {
   },
   changePayDate(date,companyId){
     return base.put('/company/change_payment_date',{date,companyId})
+  },
+  changeSpace(newSpace,companyId){
+    return base.put('/company/change_space',{newSpace,companyId})
   }
   
 }

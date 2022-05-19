@@ -30,7 +30,7 @@ const useAlert = (type,callbackSucc, callbackErr) => {
             setTimeout(() => {
               callbackSucc(false)
               setSucsess(false)
-            },5000)     
+            },1000)     
           }    
         }
         return false
